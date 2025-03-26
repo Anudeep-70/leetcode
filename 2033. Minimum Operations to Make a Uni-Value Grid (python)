@@ -1,0 +1,16 @@
+class Solution:
+    def minOperations(self, grid: List[List[int]], x: int) -> int:
+        r=len(grid)
+        c=len(grid[0])
+        arr=[]
+        for i in range(r):
+            for j in range(c):
+                if grid[i][j]%x!=grid[0][0]%x:
+                    return -1
+                arr.append(grid[i][j])
+        arr.sort()
+        n=arr[len(arr)//2]
+        c=0
+        for i in arr:
+            c+=(abs(n-i))//x
+        return c
